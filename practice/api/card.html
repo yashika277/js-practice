@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card</title>
+</head>
+<style>
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.card{
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 10px 5px 5px lightcyan; 
+    background-color: white;
+}
+.card h2{
+    font-size: 25px;
+    margin: 0;
+
+}
+.card p{
+    margin: 10px 0;
+}
+</style>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+<script>
+    fetch("https://jsonplaceholder.typicode.com/todos").then((res)=>{
+        res.json(res).then((result)=>{
+            result.map((val,ind)=>{
+                const cardContainer=document.querySelector('.container');
+                const card=document.createElement('div');
+                card.classList.add('card');
+
+                const id=document.createElement('h3');
+                id.textContent=val.id;
+
+                const title=document.createElement('p');
+                title.textContent=val.title;
+
+                card.appendChild(id);
+                card.appendChild(title);
+                cardContainer.appendChild(card);
+
+
+            });
+        });
+    });
+</script>
+</html>

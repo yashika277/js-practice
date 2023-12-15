@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="fname">
+    <input type="text" id="lname">
+    <button onclick="save()">Submit</button>
+</body>
+
+<script>
+
+const save = ()=>{
+
+// let arr = [];
+const result=JSON.parse(localStorage.getItem("data"));
+
+let fname=document.getElementById("fname").value
+let lname=document.getElementById("lname").value
+
+
+const data=[{
+
+fname: fname,
+lname: lname,
+
+}];
+
+result.push(data);
+// localStorage.setItem("data",JSON.stringify(arr));
+
+
+console.log(result);
+
+localStorage.setItem("data",JSON.stringify(result));
+
+
+};
+
+
+</script>
+
+
+
+</html>

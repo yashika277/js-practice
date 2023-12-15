@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    fetch("https://jsonplaceholder.typicode.com/todos").then((res)=>{
+        res.json().then((result)=>{
+            console.log(result[9]);
+        });
+
+    });
+
+    
+
+    fetch("https://dummyjson.com/products").then((res)=>{
+        res.json().then((products)=>{
+            console.log(products.products[10]);
+        });
+    });
+
+    fetch("https://fakestoreapi.com/products").then((res)=>{
+        res.json().then((products)=>{
+            console.log(products[6]);
+        });
+    });
+
+    fetch("https://reqres.in/api/products").then((res)=>{
+        res.json().then((products)=>{
+            console.log(products.data[2]);
+        });
+    });
+
+    fetch("https://api.escuelajs.co/api/v1/products").then((res)=>{
+        res.json().then((result)=>{
+            console.log(result[0]);
+        });
+    });
+
+    fetch("https://api.escuelajs.co/api/v1/categories").then((res)=>{
+        res.json().then((result)=>{
+            console.log(result[1]);
+        });
+    });
+
+    fetch("https://api.escuelajs.co/api/v1/users").then((res)=>{
+        res.json().then((result)=>{
+            console.log(result[3]);
+        });
+    });
+
+    fetch("")
+</script>
+</html>

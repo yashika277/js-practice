@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multiplication table </title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let a = parseInt(prompt("Enter number: "));
+
+    // let arr=[1,2,3,4,5,6,7,8,9,10];
+    // let table=arr.map((e) => (a*num));
+    // console.log(table);
+
+    let b;
+    function table(a,b=1){
+        if(b==11){
+            return 
+        }
+        else{
+            console.log(a+ "*" +b+ "=" +a*b);
+            b++;
+            table(a,b);
+        }
+    }
+    table(a,b);
+
+</script>
+
+</html>

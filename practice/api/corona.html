@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>corona api</title>
+    <style>
+        #user-data tr td{
+            text-align: center;
+            padding: 10px;
+        }
+        table thead tr th{
+            padding: 10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <table border="1px" align="center">
+        <thead >
+            <tr>
+                <th>User ID</th>
+                <th>ID</th>
+                <th>title</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody id="user-data">
+            
+        </tbody>
+    </table>
+</body>
+<script>
+    fetch("https://jsonplaceholder.typicode.com/todos").then((res) => 
+        res.json(res).then((result) => {
+            document.getElementById('user-data').innerHTML = result.map((val) =>
+                `<tr>
+                    <td>${val.userId}</td>
+                    <td>${val.id}</td>
+                    <td>${val.title}</td>
+                    <td>${val.completed}</td>
+                </tr>
+                `
+            ).join(" ");
+            })
+    )
+</script>
+
+</html>

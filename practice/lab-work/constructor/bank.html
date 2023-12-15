@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bank Details</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class bank{
+        constructor(create_acc,withdr,depo){
+            this.create_acc=create_acc;
+            this.withdr=withdr;
+            this.depo=depo;
+        }
+        create_account(create_acc){
+            console.log("Name is: " + this.create_acc);
+        }
+        withdraw(withdraw){
+            console.log("withdraw is: " + this.withdr);
+        }
+        deposite(deposite){
+            console.log("deposite is: " + this.depo);
+        }
+    }
+    class user extends bank{
+        constructor(create_acc,withdr,depo,mobile_num){
+            super(create_acc,withdr,depo);
+            this.mobile_num=mobile_num;
+        }
+        printchild(){
+            console.log("Mobile number is: " + this.mobile_num);
+        }
+    }
+    let u1=new user ("yashika",1200,5000,9313026738);
+    u1.printchild();
+    u1.create_account();
+    u1.withdraw();
+    u1.deposite();
+   
+</script>
+</html>

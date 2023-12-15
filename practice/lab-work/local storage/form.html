@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>username password</title>
+</head>
+
+<body>
+    <form id="form">
+        <label for="">Username:</label>
+        <input type="text" name="" id="name" />
+        <br><br />
+        <label for="">password:</label>
+        <input type="text" name="" id="password" />
+        <br><br />
+        <button type="submit">submit</button>
+    </form>
+
+ 
+</body>
+<script>
+    document.getElementById('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+    let name = document.getElementById('name').value;
+    let password = document.getElementById('password').value;
+
+    localStorage.setItem('name', name);
+    localStorage.setItem('password', password);
+    console.log(localStorage);
+
+    
+
+    alert('your data has been saved in localStorage.');
+    });
+</script>
+
+</html>

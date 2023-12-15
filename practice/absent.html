@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>absent days</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var absent=parseInt(prompt("Enter absent days: "));
+    if(absent==7){
+        document.write("fine will be pay user is: ",absent*7);
+    }
+    if(absent>=8 && absent<=14){
+        document.write("fine will be pay user is: ",absent*10);
+    }
+    if(absent>=30 && absent<=15){
+        document.write("fine will be pay user is: ",absent*20);
+    }
+    if(absent>30){
+        document.write("fine will be pay user is: ",absent*100);
+    }
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Input Values</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="myForm">
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1"><br><br>
+        
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2"><br><br>
+        
+        <label for="input3">Input 3:</label>
+        <input type="text" id="input3"><br><br>
+        
+        <button type="button" id="printInputs">Print Inputs</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#printInputs").on("click", function() {
+                var input1Value = $("#input1").val();
+                var input2Value = $("#input2").val();
+                var input3Value = $("#input3").val();
+
+                var resultText = "Input 1: " + input1Value + "<br>";
+                resultText += "Input 2: " + input2Value + "<br>";
+                resultText += "Input 3: " + input3Value;
+
+                $("#result").html(resultText);
+            });
+        });
+    </script>
+</body>
+</html>

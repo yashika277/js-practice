@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+
+<body>
+    <label for="">username</label>
+    <input type="text" id="username">
+    <br></br>
+    <label for="">password</label>
+    <input type="text" id="password">
+    <br></br>
+    <button onclick="save()">submit</button>
+</body>
+<script>
+    const save = () => {
+        // let arr = [];
+        const result = JSON.parse(localStorage.getItem("data"));
+        let username = document.getElementById("username").value
+        let password = document.getElementById("password").value
+        const data = [{
+            username: username,
+            password: password
+
+        }];
+        result.push(data);
+        // localStorage.setItem("data",JSON.stringify(arr));
+        
+        localStorage.setItem("data",JSON.stringify(result));
+        console.log(result);
+    };
+</script>
+
+</html>

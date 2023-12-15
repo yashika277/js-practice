@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    let Target=parseInt(prompt("Enter Target:"));
+    let arr=[5,2,1];
+    sum=0;
+    for(let i=0; i<arr.length; i++){
+       if(arr[i]+arr[i+1]==Target){
+        let arr1=[];
+        arr1.push(i,i+1);
+        console.log(arr1);
+        
+       }
+       if(arr[i]+arr[i+2]==Target){
+        let arr2=[];
+        arr2.push(i,i+2);
+        console.log(arr2);
+       }
+       
+    }
+    
+
+    
+
+</script>
+</html>

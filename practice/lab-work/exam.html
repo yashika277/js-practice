@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product list</title>
+</head>
+<body>
+    <button onclick="btn()">click</button>
+    <br>
+</body>
+<script>
+    let product=[{
+        id:1,
+        available:true,
+        name:"p1",
+        price:300,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:2,
+        available:true,
+        name:"p2",
+        price:350,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:3,
+        available:true,
+        name:"p3",
+        price:350,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:4,
+        available:true,
+        name:"p4",
+        price:350,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:5,
+        available:true,
+        name:"p5",
+        price:400,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:6,
+        available:false,
+        name:"p6",
+        price:350,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:7,
+        available:false,
+        name:"p7",
+        price:450,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:8,
+        available:false,
+        name:"p8",
+        price:400,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:9,
+        available:false,
+        name:"p9",
+        price:500,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:10,
+        available:false,
+        name:"p10",
+        price:450,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:11,
+        available:false,
+        name:"p11",
+        price:760,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:12,
+        available:false,
+        name:"p12",
+        price:390,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:13,
+        available:false,
+        name:"p13",
+        price:900,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:14,
+        available:false,
+        name:"p14",
+        price:890,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    {
+        id:15,
+        available:false,
+        name:"p15",
+        price:360,
+        description:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae!"
+    },
+    ];
+    let data=product.filter(({available,name})=>{
+        if(available == true){
+            document.write(name + "<br>"); 
+        }      
+    });
+    function btn(){
+        let data=product.filter(({available,name})=>{
+        if(available == false){
+            document.write(name + "<br>"); 
+        }      
+    });
+    }
+
+</script>
+</html>

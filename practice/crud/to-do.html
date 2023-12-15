@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Operation</title>
+    <style>
+        .container{
+            display: flex;
+            height: 100vh;
+            margin: auto;
+            justify-content: center;
+            background: linear-gradient(45deg, #0e4470, #fff)
+        }
+        .table {
+            margin-left: 100px;
+            width: auto;
+            height: auto;
+        }
+        table {
+            width: 500px;
+            border-collapse: collapse;
+            
+        }
+        th,
+        td {
+            border: 3px solid #b3b1b1;
+            padding: 8px;
+            text-align: left;
+        }
+         th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <input type="text" name="fname" id="fname">
+            <input type="text" name="lname" id="lname">
+            <button onclick="add()">Add</button>
+            <br></br>
+
+            <input type="hidden" name="" id="index">
+            <input type="text" name="fname" id="firstname">
+            <input type="text" name="lname" id="lastname">
+            <button onclick="update()">Update</button>
+            <button onclick="cancle()">Cancle</button>
+            <br></br>
+        </div>
+    
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>Delete-Item</th>
+                <th>Update-Item</th>
+            </tr>
+        </thead>
+        <tbody id="user-data"></tbody>
+    </table>
+</div>
+</body>
+<script>
+    let arr = [];
+    const result = JSON.parse(localStorage.getItem("data"));
+    const add = () => {
+        let fname = document.getElementById('fname').value;
+        let lname = document.getElementById('lname').value;
+
+        const data = {
+            fname,
+            lname,
+        };
+
+        result.push(data);
+        localStorage.setItem("data", JSON.stringify(result));
+        console.log(localStorage);
+        location.reload();
+    }
+    const getData = () => {
+        let user_data = document.getElementById('user-data');
+
+        result.map((val, ind) => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${ind}</td>
+            <td>${val.fname}</td>
+            <td>${val.lname}</td>
+            <td><button onclick="remove(${ind})">Delete</button></td>
+            <td><button onclick="edit(${ind})">Update</button></td>`
+
+            user_data.appendChild(row);
+
+        })
+    }
+    getData();
+    const remove = (ind) => {
+        result.splice(ind, 1);
+        localStorage.setItem("data", JSON.stringify(result));
+        console.log(localStorage);
+        location.reload();
+
+    }
+    const edit = (ind) => {
+        let data = result[ind];
+        const hidden = (document.getElementById('index').value = ind);
+        const firstname = (document.getElementById('firstname').value = data.fname);
+        const lastname = (document.getElementById('lastname').value = data.lname);
+
+        // console.log(data);
+
+    }
+    const update = () => {
+        const firstname = document.getElementById('firstname').value;
+        const lastname = document.getElementById('lastname').value;
+        const hidden = document.getElementById('index').value;
+
+        const updateData = {
+            fname: firstname,
+            lname: lastname,
+        };
+        result[hidden] = updateData;
+        localStorage.setItem("data", JSON.stringify(result));
+        location.reload();
+    }
+    // localStorage.clear();
+</script>
+
+</html>

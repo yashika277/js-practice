@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card</title>
+</head>
+<style>
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.card{
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 15px;
+    width: 350px;
+    box-shadow: 10px 5px 5px lightcyan; 
+    background-color: white;
+}
+.card:hover{
+    transform: translateY(-20px);
+    transition: all 0.5s;
+}
+.card h2{
+    font-size: 25px;
+    margin: 0;
+
+}
+img{
+    width: 100%;
+    height: 300px;
+}
+
+.card p{
+    margin: 10px 0;
+}
+</style>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+<script>
+    fetch("https://fakestoreapi.com/products").then((res)=>{
+        res.json(res).then((result)=>{
+            result.map((val,ind)=>{
+                const cardContainer=document.querySelector('.container');
+                const card=document.createElement('div');
+                card.classList.add('card');
+
+                const img=document.createElement('img');
+                card.classList.add('card-img');
+                img.src=val.image;
+
+                const title=document.createElement('h3');
+                title.textContent=val.title;
+
+                const id=document.createElement('h4');
+                id.textContent=val.id;
+
+                const description=document.createElement('p');
+                description.textContent=val.description;
+
+                
+
+                card.appendChild(img);
+                card.appendChild(id);
+                card.appendChild(title);
+                card.appendChild(description);
+                cardContainer.appendChild(card);
+
+
+            });
+        });
+    });
+</script>
+</html>

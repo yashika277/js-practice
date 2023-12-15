@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation LocalStorage</title>
+</head>
+
+<body>
+
+    <form id="form">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="fname" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lname" name="lastName" required>
+
+        <button type="button" onclick="validate()">Submit</button>
+    </form>
+
+    <script>
+        const validate =()=>{
+            const result = JSON.parse(localStorage.getItem("data"));
+            let fname = document.getElementById('fname').value;
+            let lname = document.getElementById('lname').value;
+
+            if (fname.trim() === '' || lname.trim() === '') {
+                alert('Please fill out all fields');
+                return;
+            }
+
+            let data = {
+               fname,
+               lname
+            };
+            result.push(data);
+            localStorage.setItem("data", JSON.stringify(data));
+            console.log(result);
+
+        }
+    </script>
+
+</body>
+
+</html>

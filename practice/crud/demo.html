@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .container {
+            display: flex;
+            max-width: 1290px;
+            margin: auto;
+            justify-content: center;
+        }
+
+        .table {
+            margin-left: 100px;
+            width: auto;
+        }
+
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            /* margin-top: 50px; */
+        }
+
+        th,
+        td {
+            border: 2px solid #b3b1b1;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body style="margin-top: 50px;">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="index" id="index" />
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="firstname"><br><br>
+                    <label for="lname">Last Name:</label>
+                    <input type="text" id="lastname"><br><br>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="update()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="form">
+
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname"><br><br>
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname"><br><br>
+            <div style="display: flex; justify-content: center;">
+                <button onclick="save()">Save</button>
+                <button onclick="cl()" style="margin: 0 5px;">Clear</button>
+            </div>
+        </div>
+
+
+        <div class="table">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>delete</th>
+                        <th>update</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        let data = JSON.parse(localStorage.getItem("data")) || [];
+
+        function save() {
+            let fname = document.getElementById("fname").value;
+            let lname = document.getElementById("lname").value;
+
+            const m_data = {
+                firstName: fname,
+                lastName: lname,
+            };
+
+            data.push(m_data);
+
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+
+            localStorage.setItem("data", JSON.stringify(data));
+            getdata();
+        }
+
+        function cl(){
+            localStorage.removeItem("data");
+            location.reload();
+        }
+        function getdata() {
+            const tableBody = document.getElementById("table-body");
+            tableBody.innerHTML = "";
+
+            data.map((m_data, ind) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${ind}</td>
+                    <td>${m_data.firstName}</td>
+                    <td>${m_data.lastName}</td>
+                    <td><button class="btn btn-danger" onclick="del(${ind})">Delete</button></td>
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="edit(${ind})">
+            update
+        </button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function del(index) {
+            data.splice(index, 1)
+            console.log(index);
+            localStorage.setItem("data", JSON.stringify(data));
+            location.reload();
+        }
+        getdata();
+
+
+        function edit(index) {
+            const d = data[index];
+
+            const hidden = (document.getElementById("index").value = index);
+            const firstname = (document.getElementById("firstname").value =
+                d.firstName);
+            const lastname = (document.getElementById("lastname").value =
+                d.lastName);
+        }
+        function update() {
+            const firstName = document.getElementById('firstname').value;
+            const lastName = document.getElementById('lastname').value;
+            const index = parseInt(document.getElementById('index').value);
+
+            const updata = {
+                firstName,
+                lastName,
+            }
+
+            data[index] = updata;
+
+            localStorage.setItem("data", JSON.stringify(data));
+            location.reload()
+        }
+    </script>
+</body>
+
+</html>

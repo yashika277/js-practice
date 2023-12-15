@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do list</title>
+    <style>
+        .center{
+            align-items: center;
+        }
+        table{
+            width: 400px;
+            border-collapse: collapse;
+        }
+        th,
+        td{
+            border: 2px solid;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <label for="">First name</label>
+    <input type="text" id="fname" required><br></br>
+    <label for="">Last name</label>
+    <input type="text" id="lname" required><br></br>
+    <button onclick="save()">Add</button>
+    <button onclick="remove()">clear</button>
+    <br></br>
+    <table id="tbl">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+        </thead>
+        <tbody id="tbl-body">
+
+        </tbody>
+    </table>
+</body>
+<script>
+    let data=JSON.parse(localStorage.getItem("data")) || [];
+    function save(){
+        // localStorage.clear();
+        let fname=document.getElementById("fname").value;
+        let lname=document.getElementById("lname").value;
+        
+        const text={
+            fname,
+            lname,
+        };
+
+        data.push(text);
+
+        document.getElementById("fname").value="";
+        document.getElementById("lname").value="";
+
+        if(fname=="" || lname==""){
+            alert("fill the both field");
+        }
+        else{
+            localStorage.setItem("data",JSON.stringify(data));
+            update();
+        }
+    }
+    function remove(){
+        localStorage.removeItem("data");
+        data=[];
+        location.reload();
+    }
+    function update(){
+        const tablebody=document.getElementById("tbl-body");
+        tablebody.innerHTML="";
+
+        data.map(text=>{
+            const row=document.createElement("tr");
+            row.innerHTML=`
+            <td>${text.fname}</td>
+            <td>${text.lname}</td>
+            `;
+            tablebody.appendChild(row);
+        });
+    
+    }
+    update();
+</script>
+</html>

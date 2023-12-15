@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // =============simple interest======================
+    let p_Amount=parseInt(prompt("Enter Amount: "));
+    let Interest_rate=parseInt(prompt("Enter Rate: "));
+    let Time=parseInt(prompt("Enter Time: "));
+    document.write("Total is: ",p_Amount+((p_Amount*Interest_rate*Time)/100));
+
+    
+    // ===================unit bill========================
+    // let unit=parseInt(prompt("Enter useable unit: "));
+    // let rate_unit=parseInt(prompt("Enter rate of per unit: "));
+    // let Total_amount=parseInt(prompt("Total bill Amount is: ",unit*rate_unit));
+
+    // ===================subject marks=====================
+    let english=parseInt(prompt("Enter english marks: "));
+    let Gujrati=parseInt(prompt("Enter Gujrati marks: "));
+    let maths=parseInt(prompt("Enter maths marks: "));
+    let science=parseInt(prompt("Enter science marks: "));
+    let economics=parseInt(prompt("Enter economics marks: "));
+
+    document.write("Total is: ",english+Gujrati+maths+science+economics);
+    document.write("<br>Percentage: ",(english+Gujrati+maths+science+economics)/5);
+</script>
+</html>

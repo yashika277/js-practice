@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather api</title>
+</head>
+
+<body>
+    <input type="text" id="city">
+    <button onclick="search()">search</button>
+
+</body>
+<script>
+    function search() {
+        let input = document.getElementById('city').value;
+        const url = `https://weather338.p.rapidapi.com/locations/search?query=${input}&language=en-US`
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '435ce0a37cmsh4951e325e24bf10p190316jsn44d74edf725a',
+                'X-RapidAPI-Host': 'weather338.p.rapidapi.com'
+            }
+        };
+        fetch(url, options).then((res) => {
+            // console.log(res.json(res));
+            res.json(res).then((result) => {
+                console.log(result);
+            })
+        })
+    }
+</script>
+
+</html>

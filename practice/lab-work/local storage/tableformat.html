@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table format</title>
+</head>
+
+<body>
+    <label for="">UserName:</label>
+    <input type="text" id="name">
+    <br></br>
+    <label for="">password:</label>
+    <input type="text" id="password">
+    <br></br>
+    <button onclick="submit()">submit</button>
+    <br></br>
+    <table  id="table" border="1">
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> password </th>
+            </tr>
+        </thead>
+    </table>
+
+</body>
+<script>
+    const submit = () => {
+        // let arr = [];
+        
+        const result = JSON.parse(localStorage.getItem("data"));
+
+        let username = document.getElementById("name").value;
+        let password = document.getElementById("password").value;
+
+        const data = {
+            user: username,
+            pwd: password,
+        };
+        
+        // localStorage.setItem("data", JSON.stringify(arr));
+
+        result.push(data);
+
+        localStorage.setItem("data", JSON.stringify(result));
+        console.log(result);
+    }
+    const show=()=>{
+        
+
+    }
+</script>
+</html>

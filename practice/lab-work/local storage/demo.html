@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operation</title>
+</head>
+<body>
+    <label for=" ">Fname</label>
+    <input type="text" id="fname" name=" ">
+    <br><br/>
+
+    <label for=" ">Lname</label>
+    <input type="text" id="lname" name=" ">
+    <br><br/>
+
+    <button onclick="save()">Save</button>
+
+</body>
+<script>
+    
+    function save(){
+        let arr= [];
+        
+        let dataResult= JSON.parse(localStorage.getItem("data"));
+        console.log(dataResult);
+        
+        let fname=document.getElementById("fname").value;
+        let lname=document.getElementById("lname").value;
+
+        const data={
+            firstname:fname,
+            lastname:lname,
+
+        };
+        console.log(data);
+        dataResult.push(data);
+        
+
+        localStorage.setItem("data",JSON.stringify(dataResult));
+        console.log(localStorage);
+
+    }
+</script>
+</html>

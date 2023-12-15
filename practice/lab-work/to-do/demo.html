@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do list table</title>
+</head>
+<body>
+    <input type="text" id="text"/>
+    <button onclick="save()">Add</button>
+    <button onclick="remove()">cancel</button>
+    <ul>
+
+    </ul>
+</body>
+<script>
+    let result=localStorage.getItem("data")
+    ?JSON.parse(localStorage.getItem("data"))
+    :[];
+    let text=document.getElementById("text");
+    let ul=document.querySelector("ul");
+    
+    const save=()=>{ 
+        if(text==""){
+            alert("Fill the data");
+            return;
+        }
+        result.push(text.value);
+        localStorage.setItem("data",JSON.stringify(result));
+        addData(text.value);
+        console.log(localStorage);
+        text.value="";
+
+        // localStorage.clear();
+    };
+    const remove=()=>{
+        
+    }
+
+    result.forEach(addData);
+
+    function addData(task){
+        const li =document.createElement("li");
+        li.textContent=task;
+        ul.appendChild(li);
+    }
+</script>
+</html>

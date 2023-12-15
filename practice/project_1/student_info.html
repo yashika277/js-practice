@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student information</title>
+</head>
+
+<body>
+  <div id="table-container"></div>
+</body>
+
+
+<script type="text/javascript">
+  
+    const container = document.getElementById("table-container");
+
+    const table = `
+    <table width='400' height='200' border='3' align='center'>
+
+      <tr bgcolor='#3D8765'>
+        <th colspan='2' >My Details</th>
+      </tr>
+        <tr bgcolor='#3D8765'>
+          <td>Name:</td>
+          <td>Yashika Bhadkoliya</td>
+        </tr>
+        <tr bgcolor='#3D8765'>
+          <td>Father Name:</td>
+          <td>Shaileshbhai Bhadkoliya</td>
+        </tr>
+        <tr bgcolor='#3D8765'>
+          <td>GRID:</td>
+          <td>2672</td>
+        </tr>
+        <tr bgcolor='#3D8765'>
+          <td>E-mail:</td>
+          <td>yashikabhadkoliya@gmail.com</td>
+        </tr>
+        <tr bgcolor='#3D8765'>
+          <td>Course:</td>
+          <td>Full Stack Development</td>
+        </tr>
+        <tr bgcolor='#3D8765'>
+          <td>Contact:</td>
+          <td>9909412067</td>
+        </tr>
+
+    </table>
+    `;
+    container.innerHTML = table;
+  
+
+</script>
+
+</html>

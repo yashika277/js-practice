@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map function</title>
+</head>
+
+<body>
+   
+        <label for="">username:</label>
+        <input type="text" id="name">
+        <br></br>
+        <label for="">password:</label>
+        <input type="text" id="password">
+        <br></br>
+        <button onclick="submit()">submit</button>
+    
+</body>
+<script>
+    const submit = () => {
+        let arr = [];
+        const result = JSON.parse(localStorage.getItem("data"));
+        let name = document.getElementById("name").value;
+        let password = document.getElementById("password").value;
+
+        if(name=='' || password==''){
+            alert("fill out the data");
+            return;
+        }
+       
+        const data = {
+            name,
+            password
+        }
+
+        result.push(data);
+        localStorage.setItem("data", JSON.stringify(result));
+        console.log(result);
+        // localStorage.clear();
+
+    }
+
+
+</script>
+
+</html>
